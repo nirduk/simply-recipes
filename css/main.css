@@ -340,7 +340,7 @@ navbar
   position: relative;
 }
 
-.nav-link::before{
+.nav-link::before {
   content: '';
   position: absolute;
   width: 100%;
@@ -354,7 +354,7 @@ navbar
   transition: transform 0.3s ease-in-out;
 }
 
-.nav-link:hover::before{
+.nav-link:hover::before {
   transform-origin: left;
   transform: scaleX(1);
 }
@@ -541,9 +541,12 @@ recipes
 }
 
 .tags-list a:hover::before {
-  color: var(--primary-500);
   transform-origin: left;
   transform: scaleX(1);
+}
+
+.tags-list a:hover {
+  color: var(--primary-500);
 }
 
 .recipe {
@@ -566,15 +569,17 @@ recipes
   background-color: rgba(0, 0, 0, 0.3);
   top: 0;
   left: 0;
-  transform-origin: top;
-  transform: scaleY(0);
-  transition: transform 0.3s ease-in-out;
+  transform-origin: center;
+  transform: scale(0);
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
   z-index: 1;
 }
 
 .recipe:hover::before {
-  transform-origin: top;
-  transform: scaleY(1);
+  transform-origin: center;
+  transform: scale(1);
+  opacity: 100%;
 }
 
 .recipe:hover {
@@ -588,7 +593,7 @@ recipes
   transition: 0.3s ease-in-out all;
 }
 
-.recipe:hover img{
+.recipe:hover img {
   filter: blur(0.15rem);
 }
 
