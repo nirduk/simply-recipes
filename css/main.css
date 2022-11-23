@@ -337,10 +337,30 @@ navbar
   padding: 1rem 0;
   border-top: 1px solid var(--grey-500);
   transition: var(--transition);
+  position: relative;
+}
+
+.nav-link::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 0.2rem;
+  border-radius: 0.2rem;
+  background-color: var(--primary-500);
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-link:hover::before{
+  transform-origin: left;
+  transform: scaleX(1);
 }
 
 .nav-link:hover {
-  color: var(--primary-500)
+  color: var(--primary-500);
 }
 
 .contact-link a {
@@ -493,29 +513,83 @@ recipes
 }
 
 .tags-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: column;
 }
 
 .tags-list a {
+  width: fit-content;
   text-transform: capitalize;
   display: block;
   color: var(--grey-500);
   transition: var(--transition);
+  position: relative;
 }
 
-.tags-list a:hover {
+.tags-list a::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 0.2rem;
+  border-radius: 0.2rem;
+  background-color: var(--primary-500);
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.tags-list a:hover::before {
   color: var(--primary-500);
+  transform-origin: left;
+  transform: scaleX(1);
 }
 
 .recipe {
   display: block;
+  transition: var(--transition);
+  position: relative;
+}
+
+.recipe::before {
+  display: flex;
+  content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur vero veniam quisquam nesciunt nostrum eos?';
+  position: absolute;
+  text-align: center;
+  align-items: center;
+  color: var(--grey-50);
+  padding: 0.5rem;
+  width: 100%;
+  height: 10rem;
+  border-radius: var(--borderRadius);
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.recipe:hover::before {
+  transform-origin: top;
+  transform: scaleY(1);
+}
+
+.recipe:hover {
+  transform: scale(1.02);
 }
 
 .recipe-img {
   height: 15rem;
   border-radius: var(--borderRadius);
   margin-bottom: 1rem;
+  transition: 0.3s ease-in-out all;
+}
+
+.recipe:hover img{
+  filter: blur(0.15rem);
 }
 
 .recipe h5 {
@@ -671,6 +745,7 @@ tags
 
 .tag:hover {
   background: var(--primary-500);
+  transform: scale(1.01);
 }
 
 .tag h5,
